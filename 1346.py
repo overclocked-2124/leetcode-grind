@@ -1,7 +1,13 @@
 class Solution:
     def checkIfExist(self, arr: List[int]) -> bool:
-        for i in range(len(arr)):
-            for j in range(len(arr)):
-                if i != j and arr[i] == 2 * arr[j]:
-                    return True
-        return False
+        freq={}
+
+        for num in arr:
+            freq[num] = freq.get(num,0)+1
+
+        for num in arr:
+            if num!=0 and 2*num in freq:
+                return(True)
+            if num==0 and freq[0]>1:
+                return(True)
+        return(False)
